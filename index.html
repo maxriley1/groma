@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; form-action mailto:; base-uri 'self'; frame-ancestors 'none'">
+<title>GROMA Cyber Intelligence — Every breach traces back to a line.</title>
+<meta name="description" content="Security architecture, threat modelling and independent security consultancy. Christchurch, Aotearoa.">
+<meta property="og:site_name" content="GROMA Cyber Intelligence"><meta property="og:title" content="Every breach traces back to a line."><meta property="og:description" content="Security architecture, threat modelling and independent security consultancy. Christchurch, Aotearoa."><meta property="og:type" content="website"><meta property="og:url" content="https://www.gromaintel.com/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23141414'/><text x='50' y='67' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' font-size='46' fill='%23e0584a'>G</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+
+<style>
+html{scroll-behavior:auto}
+body{margin:0;background:#141414;color:#ebe7df;font-family:"Archivo",system-ui,sans-serif;text-wrap:pretty;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:#ebe7df}a:hover{color:#e0584a}
+*{box-sizing:border-box}
+::selection{background:#8a1c1c;color:#ebe7df}
+.m{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;letter-spacing:.16em;text-transform:uppercase;font-size:11px;font-weight:400}
+.wrap{max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,64px)}
+.w{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.06em;margin-bottom:-.06em}.w>span{display:inline-block;transform:translateY(112%);transition:transform 1.1s cubic-bezier(.2,.8,.2,1) calc(var(--i,0)*.07s + var(--d,0s))}
+.is-in .w>span,.g-ready .hero .w>span{transform:none}
+[data-rv]{opacity:0;transform:translateY(32px);transition:opacity 1s cubic-bezier(.2,.7,.2,1) var(--d,0s),transform 1s cubic-bezier(.2,.7,.2,1) var(--d,0s)}[data-rv].is-in{opacity:1;transform:none}
+.hero [data-rv]{transition-delay:calc(var(--d,0s) + .9s)}.g-ready .hero [data-rv]{opacity:1;transform:none}
+.g-ready .hero-cv{opacity:1}
+.dr{stroke-dasharray:1200;stroke-dashoffset:1200}.is-in .dr{animation:dr 2s cubic-bezier(.3,.6,.3,1) var(--d,0s) forwards}@keyframes dr{to{stroke-dashoffset:0}}
+.pop{opacity:0;transform:translateY(8px)}.is-in .pop{animation:pop .7s cubic-bezier(.2,.7,.2,1) var(--d,0s) forwards}@keyframes pop{to{opacity:1;transform:none}}
+.hot{opacity:0}.is-in .hot{animation:hot 2.4s ease-in-out var(--d,0s) infinite}@keyframes hot{0%,100%{opacity:.35}50%{opacity:.9}}
+.btn{display:inline-flex;align-items:center;justify-content:space-between;gap:24px;min-width:250px;text-decoration:none;font-family:"IBM Plex Mono",monospace;letter-spacing:.16em;text-transform:uppercase;font-size:11px;padding:20px 22px;position:relative;overflow:hidden;color:#141414;background:#ebe7df;border:1px solid #ebe7df;transition:transform .5s cubic-bezier(.2,.8,.2,1),color .4s}
+.btn::before{content:"";position:absolute;inset:0;background:#8a1c1c;transform:translateY(101%);transition:transform .5s cubic-bezier(.2,.8,.2,1)}.btn:hover::before{transform:none}.btn>*{position:relative}.btn:hover{color:#ebe7df}.btn>span:last-child{transition:transform .4s}.btn:hover>span:last-child{transform:translateX(6px)}
+.btn.ghost{background:transparent;color:#ebe7df;border-color:rgba(235,231,223,.35)}.btn.ghost:hover{border-color:#8a1c1c}
+.btn.ink{background:#141414;color:#ebe7df;border-color:#141414}.btn.ink::before{background:#ebe7df}.btn.ink:hover{color:#141414}
+.nav a{text-decoration:none;color:#ebe7df;padding:6px 0;position:relative}.nav a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:#e0584a;transition:right .4s cubic-bezier(.2,.8,.2,1)}.nav a:hover::after{right:0}
+.marq{display:flex;gap:56px;white-space:nowrap;width:max-content;animation:marq 40s linear infinite}@keyframes marq{to{transform:translateX(-50%)}}
+.intro{position:fixed;inset:0;z-index:100;background:#141414;display:grid;place-items:center;animation:intro-out .8s cubic-bezier(.7,0,.2,1) 1.9s forwards;pointer-events:none}@keyframes intro-out{to{transform:translateY(-100%);visibility:hidden}}
+.intro i{position:absolute;background:#e0584a}.intro .h{left:0;right:0;top:50%;height:1px;transform-origin:left;animation:sx 1.2s cubic-bezier(.7,0,.2,1) .2s both}.intro .v{top:0;bottom:0;left:50%;width:1px;transform-origin:top;animation:sy 1.2s cubic-bezier(.7,0,.2,1) .5s both}@keyframes sx{from{transform:scaleX(0)}}@keyframes sy{from{transform:scaleY(0)}}
+.intro span{animation:fade .6s .9s both}@keyframes fade{from{opacity:0}}
+.cursor{position:fixed;left:0;top:0;width:28px;height:28px;margin:-14px 0 0 -14px;border:1px solid #e0584a;border-radius:50%;pointer-events:none;z-index:90;opacity:0;transition:width .3s,height .3s,margin .3s,background .3s,opacity .3s;mix-blend-mode:difference}.cursor.is-on{width:56px;height:56px;margin:-28px 0 0 -28px;background:rgba(224,88,74,.25)}
+.hero-bg{opacity:0;transition:opacity 2.4s 1.4s;animation:kb 40s ease-in-out infinite alternate}.g-ready .hero-bg{opacity:1}.hero-cv{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity 2.4s 1.8s}@keyframes kb{to{transform:scale(1.08) translateY(-1.5%)}}
+.scrub span{display:inline-block;margin-right:.25em;opacity:clamp(.12,calc(var(--p,0)*var(--n) - var(--i)),1);color:#ebe7df;transition:none}
+.svc{position:sticky;top:0;min-height:100vh;display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(32px,5vw,80px);align-items:center;padding:clamp(96px,12vh,140px) clamp(20px,4vw,64px) clamp(56px,8vh,96px);border-top:1px solid rgba(235,231,223,.14)}
+.card{position:relative;transition:transform .6s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d}.card::after{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(224,88,74,.16),transparent 50%);opacity:0;transition:opacity .5s;pointer-events:none}.card:hover::after{opacity:1}
+.li{display:flex;gap:14px;align-items:baseline;padding:11px 0;border-top:1px solid rgba(235,231,223,.14);font-size:15px}.li span:first-child{color:#e0584a;font-family:"IBM Plex Mono",monospace}
+.chalk .li{border-top-color:rgba(20,20,20,.16)}
+.strip{height:320vh;position:relative}.strip>div{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center}.track{display:flex;gap:clamp(20px,2.5vw,40px);padding:0 clamp(20px,4vw,64px);will-change:transform}
+.ap{flex:0 0 min(78vw,760px);border:1px solid rgba(235,231,223,.16);padding:clamp(28px,3vw,44px);background:linear-gradient(180deg,rgba(235,231,223,.04),transparent);min-height:min(70vh,560px);display:flex;flex-direction:column;position:relative;overflow:hidden;transition:border-color .5s}.ap:hover{border-color:#e0584a}
+.ap .n{position:absolute;right:-8px;bottom:-30px;font-weight:800;font-size:clamp(160px,22vh,260px);line-height:1;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1px rgba(235,231,223,.16);user-select:none}
+.in{width:100%;background:transparent;border:0;border-bottom:1px solid rgba(235,231,223,.35);padding:14px 0;font:inherit;font-size:17px;color:#ebe7df;outline:none;transition:border-color .3s}.in:focus{border-bottom-color:#e0584a}.in::placeholder{color:rgba(235,231,223,.4)}
+.grain{position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:80;opacity:.05;will-change:transform;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain 1.6s steps(4) infinite}@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-4%)}60%{transform:translate(-4%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(224,88,74,.55)}70%{box-shadow:0 0 0 12px rgba(224,88,74,0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (max-width:900px){.two{grid-template-columns:1fr!important}.svc{grid-template-columns:1fr;position:relative;min-height:auto;padding-top:64px}.nav{display:none!important}.strip{height:auto}.strip>div{position:static;height:auto;display:block}.track{flex-direction:column;transform:none!important;padding:0 20px}.ap{flex:none;min-height:auto}.hero h1{font-size:clamp(44px,12vw,80px)!important}.cursor{display:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}[data-rv],.w>span{opacity:1;transform:none}.intro{display:none}.scrub span{opacity:1}}
+</style>
+
+</head>
+<body>
+<div class="intro" aria-hidden="true"><i class="h"></i><i class="v"></i><span class="m" style="color:#e0584a;background:#141414;padding:8px 14px;position:relative">Setting out</span></div>
+<div class="cursor" data-cursor aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div data-progress style="position:fixed;left:0;top:0;height:2px;width:100%;background:#e0584a;transform:scaleX(0);transform-origin:left;z-index:60;pointer-events:none"></div>
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;background:linear-gradient(180deg,rgba(20,20,20,.7),rgba(20,20,20,0))" data-screen-label="Nav">
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;gap:40px;padding-top:24px;padding-bottom:20px">
+    <a href="#top" style="display:inline-flex;align-items:center;gap:14px;text-decoration:none;color:#ebe7df"><img src="assets/groma-light.png" alt="GROMA" style="height:20px;width:auto;display:block"><span class="m" style="font-size:9px;letter-spacing:.3em;opacity:.7">Cyber Intelligence</span></a>
+    <nav class="nav m" style="display:flex;gap:36px;align-items:center"><a href="#position">Position</a><a href="#services">Services</a><a href="#approach">Approach</a><a href="#about">About</a><a href="#contact" style="border:1px solid rgba(235,231,223,.5);padding:10px 14px">Start a conversation</a></nav>
+  </div>
+</header>
+
+<section id="top" class="hero" style="position:relative;min-height:100vh;display:grid;align-content:end;overflow:hidden" data-screen-label="Hero">
+  <div class="hero-bg" aria-hidden="true" style="position:absolute;inset:-4%;width:108%;height:108%;background:#0e1010 url('assets/hero-valley.png') center 45%/cover no-repeat;filter:saturate(.5) brightness(.8)"></div>
+  <canvas class="hero-cv" data-hero-canvas aria-hidden="true"></canvas>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,20,20,.5),rgba(20,20,20,.05) 30%,rgba(20,20,20,.1) 55%,rgba(20,20,20,.92) 100%);pointer-events:none"></div>
+  <div class="wrap" style="position:relative;padding-bottom:clamp(40px,6vh,72px);padding-top:140px;pointer-events:none">
+    <p class="m" data-rv style="margin:0;color:#e0584a;display:flex;align-items:center;gap:14px;pointer-events:auto"><span style="width:9px;height:9px;background:#e0584a;animation:pulse 2.2s ease-out infinite;flex:none"></span>Christchurch, Aotearoa — Taking new engagements for 2026</p>
+    <h1 style="margin:28px 0 0;font-weight:300;font-size:clamp(52px,9vw,168px);line-height:.9;letter-spacing:-.045em;max-width:12ch"><span class="w"><span style="--i:0">Every</span></span> <span class="w"><span style="--i:1">breach</span></span><br><span class="w"><span style="--i:2">traces</span></span> <span class="w"><span style="--i:3">back</span></span><br><span class="w"><span style="--i:4">to a</span></span> <span class="w"><span style="--i:5;font-weight:800;color:#e0584a">line.</span></span></h1>
+    <div class="two" style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px 64px;align-items:end;margin-top:clamp(32px,5vh,56px);pointer-events:auto">
+      <p data-rv style="--d:.15s;margin:0;max-width:48ch;font-size:clamp(16px,1.25vw,20px);line-height:1.5;color:rgba(235,231,223,.75)">GROMA sets out the two lines everything else is measured from: the architecture, and the threats against it. Security architecture, threat modelling and independent consultancy for organisations that would rather be secure than look secure.</p>
+      <div data-rv style="--d:.3s;display:flex;gap:12px;flex-wrap:wrap"><a href="#contact" class="btn" data-magnet><span>Start a conversation</span><span>→</span></a><a href="#services" class="btn ghost" data-magnet><span>The three services</span><span>↓</span></a></div>
+    </div>
+  </div>
+  <div class="m" style="position:absolute;right:clamp(20px,4vw,64px);top:96px;display:flex;flex-direction:column;align-items:flex-end;gap:6px;color:rgba(235,231,223,.35);pointer-events:none;font-size:10px"><span data-hud-ch>CH 0.000 m</span><span>STA 00 · Fixed point</span></div>
+</section>
+
+<div style="border-top:1px solid rgba(235,231,223,.16);border-bottom:1px solid rgba(235,231,223,.16);overflow:hidden;padding:16px 0" data-screen-label="Ticker"><div class="marq m" style="color:rgba(235,231,223,.7);font-size:12px"><span>Security Architecture</span><span style="color:#e0584a">◆</span><span>Threat Modelling</span><span style="color:#e0584a">◆</span><span>Consultancy</span><span style="color:#e0584a">◆</span><span>Assume breach · Prove otherwise</span><span style="color:#e0584a">◆</span><span>Christchurch · Aotearoa</span><span style="color:#e0584a">◆</span><span>Security Architecture</span><span style="color:#e0584a">◆</span><span>Threat Modelling</span><span style="color:#e0584a">◆</span><span>Consultancy</span><span style="color:#e0584a">◆</span><span>Assume breach · Prove otherwise</span><span style="color:#e0584a">◆</span><span>Christchurch · Aotearoa</span><span style="color:#e0584a">◆</span></div></div>
+
+<section id="position" class="wrap" style="padding-top:clamp(96px,14vh,180px);padding-bottom:clamp(96px,14vh,180px)" data-screen-label="Position">
+  <p class="m" data-rv style="margin:0 0 40px;color:#e0584a">01 — Position</p>
+  <p class="scrub" data-scrub style="--n:30;margin:0;font-weight:300;font-size:clamp(30px,4.2vw,74px);line-height:1.08;letter-spacing:-.035em;max-width:24ch"><span style="--i:0">Clear</span><span style="--i:1;font-weight:700">thinking.</span><span style="--i:2">Practical</span><span style="--i:3;font-weight:700">protection.</span><span style="--i:4">One</span><span style="--i:5">informed</span><span style="--i:6">view</span><span style="--i:7">of</span><span style="--i:8">security:</span><span style="--i:9">the</span><span style="--i:10">architecture,</span><span style="--i:11">the</span><span style="--i:12">threats</span><span style="--i:13">against</span><span style="--i:14">it,</span><span style="--i:15">and</span><span style="--i:16">the</span><span style="--i:17">evidence</span><span style="--i:18">that</span><span style="--i:19">the</span><span style="--i:20">controls</span><span style="--i:21">hold.</span><span style="--i:22">Decided</span><span style="--i:23">in</span><span style="--i:24">that</span><span style="--i:25">order,</span><span style="--i:26">by</span><span style="--i:27">the</span><span style="--i:28">person</span><span style="--i:29;color:#e0584a">who does the work.</span></p>
+</section>
+
+<section id="services" style="position:relative" data-screen-label="Services">
+  <div class="svc" style="background:#1b1b1b" data-rv>
+    <div style="position:relative;z-index:1">
+      <p class="m" style="margin:0;color:#e0584a">02 — Service 01 · Security Architecture</p>
+      <h2 style="margin:22px 0 0;font-weight:300;font-size:clamp(34px,4.6vw,84px);line-height:.94;letter-spacing:-.04em"><span class="w"><span style="--i:0">A breach with</span></span><br><span class="w"><span style="--i:1;font-weight:800">nowhere to go.</span></span></h2>
+      <p style="margin:28px 0 0;max-width:46ch;font-size:clamp(15px,1.15vw,18px);line-height:1.55;color:rgba(235,231,223,.72)">Trust boundaries, identity, data flows and controls decided before the first commit, so a single failure stays a single failure.</p>
+      <div class="two" style="display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:0 40px;margin-top:28px;font-size:15px">
+        <div style="border-bottom:1px solid rgba(235,231,223,.14)"><div class="li"><span>+</span><span>Trust boundary reviews</span></div><div class="li"><span>+</span><span>Identity and segmentation design</span></div><div class="li"><span>+</span><span>Cloud and integration patterns</span></div></div>
+        <div style="border-left:1px solid rgba(235,231,223,.14);padding-left:28px"><p class="m" style="margin:0;color:rgba(235,231,223,.5)">Your outcome</p><p style="margin:14px 0 0;line-height:1.5;color:rgba(235,231,223,.85)">A reference architecture with named controls and a contained blast radius.</p></div>
+      </div>
+      <a href="#contact" class="btn ghost" data-magnet style="margin-top:36px"><span>Scope an architecture review</span><span>→</span></a>
+    </div>
+    <div class="card" data-tilt style="padding:24px;border:1px solid rgba(235,231,223,.14);background:#141414">
+      <svg viewBox="0 0 640 360" style="width:100%;display:block;overflow:visible" fill="none" stroke="#ebe7df" stroke-width="1" font-family="Archivo,sans-serif" font-weight="600" font-size="12.5" aria-label="Layered zones; an attack from a public endpoint is contained at the application boundary">
+        <g class="pop" style="--d:.2s"><rect x="0" y="40" width="140" height="280" class="dr" stroke="rgba(235,231,223,.35)" stroke-dasharray="4 4"></rect><text x="10" y="56" fill="rgba(235,231,223,.5)" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="400">INTERNET</text></g>
+        <g class="pop" style="--d:.5s"><rect x="170" y="40" width="140" height="280" class="dr" stroke="rgba(235,231,223,.35)" stroke-dasharray="4 4"></rect><text x="180" y="56" fill="rgba(235,231,223,.5)" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="400">EDGE</text></g>
+        <g class="pop" style="--d:.8s"><rect x="340" y="40" width="140" height="280" class="dr" stroke="rgba(235,231,223,.35)" stroke-dasharray="4 4"></rect><text x="350" y="56" fill="rgba(235,231,223,.5)" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="400">APPLICATION</text></g>
+        <g class="pop" style="--d:1.1s"><rect x="510" y="40" width="130" height="280" class="dr" stroke="rgba(235,231,223,.35)" stroke-dasharray="4 4"></rect><text x="520" y="56" fill="rgba(235,231,223,.5)" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="400">DATA</text></g>
+        <g class="pop" style="--d:1.4s"><rect x="20" y="150" width="100" height="44" class="dr"></rect><text x="70" y="177" text-anchor="middle" fill="#ebe7df">Users</text></g>
+        <g class="pop" style="--d:1.7s"><rect x="190" y="110" width="100" height="44" class="dr"></rect><text x="240" y="137" text-anchor="middle" fill="#ebe7df">Gateway</text></g>
+        <g class="pop" style="--d:2s"><rect x="190" y="200" width="100" height="44" class="dr"></rect><text x="240" y="227" text-anchor="middle" fill="#ebe7df">Identity</text></g>
+        <g class="pop" style="--d:2.3s"><rect x="360" y="110" width="100" height="44" class="dr"></rect><text x="410" y="137" text-anchor="middle" fill="#ebe7df">API</text></g>
+        <g class="pop" style="--d:2.6s"><rect x="360" y="200" width="100" height="44" class="dr"></rect><text x="410" y="227" text-anchor="middle" fill="#ebe7df">Workers</text></g>
+        <g class="pop" style="--d:2.9s"><rect x="530" y="150" width="90" height="44" class="dr"></rect><text x="575" y="177" text-anchor="middle" fill="#ebe7df">Database</text></g>
+        <path d="M120 172h70M290 132h70M290 222h70M460 132h70v18M460 222h70v-18" class="dr" stroke="rgba(235,231,223,.5)" style="--d:3.2s"></path>
+        <g class="pop" style="--d:4.4s"><rect x="230" y="248" width="20" height="14" fill="#141414" stroke="#e0584a"></rect><path d="M234 248v-5a6 6 0 0 1 12 0v5" stroke="#e0584a"></path><text x="240" y="280" text-anchor="middle" fill="rgba(235,231,223,.6)" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="400">MFA · LEAST PRIVILEGE</text></g>
+        <path d="M70 150C70 70 250 60 338 100" class="dr" stroke="#e0584a" stroke-width="1.5" style="--d:4.8s"></path>
+        <g class="pop" style="--d:6s"><path d="M332 94l12 12M344 94l-12 12" stroke="#e0584a" stroke-width="2"></path><rect x="339" y="40" width="2" height="280" fill="#e0584a" stroke="none" class="hot" style="--d:6s"></rect></g>
+        <text x="180" y="300" text-anchor="middle" fill="#e0584a" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="400" class="pop" style="--d:5.4s">ATTACK PATH · PUBLIC ENDPOINT</text>
+        <g class="pop" style="--d:6.6s"><rect x="440" y="300" width="200" height="34" fill="#8a1c1c"></rect><text x="456" y="322" fill="#ebe7df" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="500">CONTAINED AT BOUNDARY</text></g>
+        <text x="0" y="352" fill="rgba(235,231,223,.45)" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="400">FIG. 01 — ZONES, BOUNDARIES, BLAST RADIUS</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="svc" style="background:#141414" data-rv>
+    <div style="position:relative;z-index:1">
+      <p class="m" style="margin:0;color:#e0584a">02 — Service 02 · Threat Modelling</p>
+      <h2 style="margin:22px 0 0;font-weight:300;font-size:clamp(34px,4.6vw,84px);line-height:.94;letter-spacing:-.04em"><span class="w"><span style="--i:0">You draw it.</span></span><br><span class="w"><span style="--i:1;font-weight:800;color:#e0584a">We connect the dots.</span></span></h2>
+      <p style="margin:28px 0 0;max-width:46ch;font-size:clamp(15px,1.15vw,18px);line-height:1.55;color:rgba(235,231,223,.72)">Understand how an attacker could reach what matters. Examine your architecture, challenge assumptions, and connect credible attack paths to practical controls.</p>
+      <div class="two" style="display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:0 40px;margin-top:28px;font-size:15px">
+        <div style="border-bottom:1px solid rgba(235,231,223,.14)"><div class="li"><span>+</span><span>Architecture-led threat assessments</span></div><div class="li"><span>+</span><span>Internal &amp; external attack paths</span></div><div class="li"><span>+</span><span>Threat-to-control mapping</span></div></div>
+        <div style="border-left:1px solid rgba(235,231,223,.14);padding-left:28px"><p class="m" style="margin:0;color:rgba(235,231,223,.5)">Your outcome</p><p style="margin:14px 0 0;line-height:1.5;color:rgba(235,231,223,.85)">Documented attack paths and actionable control priorities.</p></div>
+      </div>
+      <a href="#contact" class="btn ghost" data-magnet style="margin-top:36px"><span>Book a threat model</span><span>→</span></a>
+    </div>
+    <div class="card" data-tilt style="padding:24px;border:1px solid rgba(235,231,223,.14);background:#1b1b1b">
+      <svg viewBox="0 0 640 360" style="width:100%;display:block;overflow:visible" fill="none" stroke="#ebe7df" stroke-width="1" font-family="Archivo,sans-serif" font-weight="600" font-size="12.5" aria-label="Five systems; an attack path arcs into the integration hub; four of seven logs reach the SIEM">
+        <g class="pop" style="--d:.2s"><rect x="0" y="250" width="100" height="56" class="dr"></rect><text x="50" y="274" text-anchor="middle" fill="#ebe7df">Microsoft</text><text x="50" y="291" text-anchor="middle" fill="#ebe7df">Entra ID</text></g>
+        <g class="pop" style="--d:.6s"><rect x="135" y="250" width="100" height="56" class="dr"></rect><text x="185" y="283" text-anchor="middle" fill="#ebe7df">Firewall</text></g>
+        <g class="pop" style="--d:1s"><rect x="270" y="250" width="100" height="56" class="dr"></rect><rect x="270" y="250" width="100" height="56" class="hot" fill="#8a1c1c" stroke="#e0584a" style="--d:5s"></rect><text x="320" y="283" text-anchor="middle" fill="#ebe7df">Jitterbit</text><text x="264" y="234" text-anchor="end" fill="#e0584a" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="400" class="pop" style="--d:5.2s">3 THREATS</text><text x="264" y="246" text-anchor="end" fill="#e0584a" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="400" class="pop" style="--d:5.3s">2 GAPS</text></g>
+        <g class="pop" style="--d:1.4s"><rect x="405" y="250" width="100" height="56" class="dr"></rect><text x="455" y="283" text-anchor="middle" fill="#ebe7df">ServiceNow</text></g>
+        <g class="pop" style="--d:1.8s"><rect x="540" y="250" width="100" height="56" class="dr"></rect><text x="590" y="283" text-anchor="middle" fill="#ebe7df">Database</text></g>
+        <path d="M100 278h35M235 278h35M370 278h35M505 278h35" class="dr" stroke="rgba(235,231,223,.5)" style="--d:2.2s"></path>
+        <path d="M50 250C50 120 320 120 320 244" class="dr" stroke="#e0584a" stroke-width="1.5" style="--d:3.4s"></path>
+        <path d="M314 238l6 10 6-10z" fill="#e0584a" stroke="none" class="pop" style="--d:4.8s"></path>
+        <text x="185" y="150" text-anchor="middle" fill="#e0584a" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="400" class="pop" style="--d:5s">ATTACK PATH · TOKEN REPLAY</text>
+        <g class="pop" style="--d:5.2s"><rect x="440" y="16" width="200" height="34" fill="#8a1c1c" stroke="#8a1c1c"></rect><text x="456" y="38" fill="#ebe7df" font-family="IBM Plex Mono,monospace" font-size="15" font-weight="500">3</text><text x="490" y="38" fill="#ebe7df" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="400">THREATS</text></g>
+        <g class="pop" style="--d:5.6s"><rect x="440" y="58" width="200" height="34" fill="#1b1b1b" stroke="rgba(235,231,223,.3)"></rect><text x="456" y="80" fill="#e0584a" font-family="IBM Plex Mono,monospace" font-size="15" font-weight="500">2</text><text x="490" y="80" fill="#ebe7df" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="400">CONTROL GAPS</text></g>
+        <g class="pop" style="--d:6s"><rect x="440" y="100" width="200" height="34" fill="#1b1b1b" stroke="rgba(235,231,223,.3)"></rect><text x="456" y="122" fill="#e0584a" font-family="IBM Plex Mono,monospace" font-size="15" font-weight="500">7</text><text x="490" y="122" fill="#ebe7df" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="400">REQUIRED LOGS</text></g>
+        <g class="pop" style="--d:6.4s"><path d="M284 306v30M296 306v30M308 306v30M320 306v30" stroke="#ebe7df" stroke-opacity=".7"></path><path d="M332 306v30M344 306v30M356 306v30" stroke="#e0584a" stroke-dasharray="2 3"></path><path d="M329 322l6 6M335 322l-6 6M341 322l6 6M347 322l-6 6M353 322l6 6M359 322l-6 6" stroke="#e0584a" stroke-width="1.2"></path></g>
+        <g class="pop" style="--d:7.2s"><text x="272" y="325" text-anchor="end" fill="rgba(235,231,223,.7)" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="400">4 LOGS REACH SIEM</text><text x="368" y="325" fill="#e0584a" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="400">3 NOT COLLECTED</text></g>
+        <g class="pop" style="--d:6.8s"><rect x="0" y="336" width="640" height="1" fill="#e0584a" stroke="none"></rect><text x="0" y="356" fill="#ebe7df" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="500">SOC / SIEM</text><text x="640" y="356" text-anchor="end" fill="#e0584a" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="500">IF THIS ESCALATED — WOULD YOU HAVE SEEN IT?</text></g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="svc" style="background:#8a1c1c" data-rv>
+    <div style="position:relative;z-index:1">
+      <p class="m" style="margin:0;color:rgba(235,231,223,.7)">02 — Service 03 · Consultancy</p>
+      <h2 style="margin:22px 0 0;font-weight:300;font-size:clamp(34px,4.6vw,84px);line-height:.94;letter-spacing:-.04em"><span class="w"><span style="--i:0">Independent advice.</span></span><br><span class="w"><span style="--i:1;font-weight:800">Defensible decisions.</span></span></h2>
+      <p style="margin:28px 0 0;max-width:46ch;font-size:clamp(15px,1.15vw,18px);line-height:1.55;color:rgba(235,231,223,.85)">A vendor claim, a customer questionnaire, a design choice with no obvious answer. We weigh the options against your architecture and risk appetite, and leave a written decision behind.</p>
+      <div class="two" style="display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:0 40px;margin-top:28px;font-size:15px">
+        <div style="border-bottom:1px solid rgba(235,231,223,.25)"><div class="li" style="border-top-color:rgba(235,231,223,.25)"><span style="color:#ebe7df">+</span><span>Virtual CISO on call</span></div><div class="li" style="border-top-color:rgba(235,231,223,.25)"><span style="color:#ebe7df">+</span><span>Design, vendor and tooling reviews</span></div><div class="li" style="border-top-color:rgba(235,231,223,.25)"><span style="color:#ebe7df">+</span><span>Board and customer engagement</span></div></div>
+        <div style="border-left:1px solid rgba(235,231,223,.25);padding-left:28px"><p class="m" style="margin:0;color:rgba(235,231,223,.6)">Your outcome</p><p style="margin:14px 0 0;line-height:1.5">Clear recommendations and recorded decisions, with a practitioner accountable for them.</p></div>
+      </div>
+      <a href="#contact" class="btn" data-magnet style="margin-top:36px"><span>Ask a question</span><span>→</span></a>
+    </div>
+    <div class="card" data-tilt style="padding:24px;border:1px solid rgba(235,231,223,.25);background:#141414">
+      <svg viewBox="0 0 640 360" style="width:100%;display:block;overflow:visible" fill="none" stroke="#ebe7df" stroke-width="1" font-family="Archivo,sans-serif" font-weight="600" font-size="12.5" aria-label="A question branches into three options; one is chosen and recorded as a decision">
+        <g class="pop" style="--d:.2s"><rect x="0" y="158" width="120" height="44" class="dr"></rect><text x="60" y="185" text-anchor="middle" fill="#ebe7df">Question</text></g>
+        <path d="M120 180h50M170 180v-100h50M170 180h50M170 180v100h50" class="dr" stroke="rgba(235,231,223,.5)" style="--d:.9s"></path>
+        <g class="pop" style="--d:1.6s"><rect x="220" y="58" width="130" height="44" class="dr"></rect><text x="285" y="85" text-anchor="middle" fill="#ebe7df">Buy the tool</text></g>
+        <g class="pop" style="--d:1.9s"><rect x="220" y="158" width="130" height="44" class="dr" stroke="#e0584a" fill="#8a1c1c" fill-opacity=".85"></rect><text x="285" y="185" text-anchor="middle" fill="#ebe7df">Redesign the flow</text></g>
+        <g class="pop" style="--d:2.2s"><rect x="220" y="258" width="130" height="44" class="dr"></rect><text x="285" y="285" text-anchor="middle" fill="#ebe7df">Accept the risk</text></g>
+        <g class="pop" style="--d:3s"><text x="285" y="48" text-anchor="middle" fill="rgba(235,231,223,.55)" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="400">COST · HIGH</text><text x="285" y="148" text-anchor="middle" fill="#e0584a" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="400">FITS · IN APPETITE</text><text x="285" y="248" text-anchor="middle" fill="rgba(235,231,223,.55)" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="400">EXPOSURE · OUT OF APPETITE</text></g>
+        <path d="M350 180h60" class="dr" stroke="#e0584a" stroke-width="1.5" style="--d:3.6s"></path>
+        <path d="M404 176l6 4-6 4z" fill="#e0584a" stroke="none" class="pop" style="--d:4.2s"></path>
+        <g class="pop" style="--d:4.4s"><rect x="410" y="120" width="230" height="120" fill="#1b1b1b" stroke="rgba(235,231,223,.35)"></rect><rect x="410" y="120" width="4" height="120" fill="#8a1c1c" stroke="none"></rect><text x="430" y="146" fill="#e0584a" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="500">DECISION RECORD · ADR-014</text><text x="430" y="172" fill="#ebe7df" font-size="13">Redesign the token flow</text><text x="430" y="194" fill="rgba(235,231,223,.7)" font-size="12" font-weight="400">Owner · Platform lead</text><text x="430" y="212" fill="rgba(235,231,223,.7)" font-size="12" font-weight="400">Review · Next quarter</text><text x="430" y="230" fill="rgba(235,231,223,.7)" font-size="12" font-weight="400">Residual risk · Low, accepted</text></g>
+        <text x="0" y="352" fill="rgba(235,231,223,.45)" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="400">FIG. 03 — ONE QUESTION, ONE RECORDED DECISION</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="approach" class="strip" data-strip style="background:#141414;border-top:1px solid rgba(235,231,223,.14)" data-screen-label="Approach">
+  <div>
+    <div class="track" data-track>
+      <div style="flex:0 0 min(70vw,560px);display:flex;flex-direction:column;justify-content:center;padding-right:clamp(20px,4vw,64px)" data-rv>
+        <p class="m" style="margin:0;color:#e0584a">03 — Approach</p>
+        <h2 style="margin:22px 0 0;font-weight:300;font-size:clamp(36px,4.6vw,84px);line-height:.94;letter-spacing:-.04em">A groma fixes<br><strong style="font-weight:800">two lines.</strong></h2>
+        <p style="margin:28px 0 0;max-width:40ch;font-size:clamp(15px,1.15vw,18px);line-height:1.55;color:rgba(235,231,223,.72)">Everything else is measured from them. Three stages, in a fixed order, each closing with a written record you can hand to a board or auditor.</p>
+        <p class="m" style="margin:36px 0 0;color:rgba(235,231,223,.4);display:flex;align-items:center;gap:12px"><span style="width:28px;height:1px;background:#e0584a"></span>Keep scrolling to traverse</p>
+      </div>
+      <article class="ap" data-rv style="--d:.1s">
+        <p class="m" style="margin:0;color:#e0584a">Stage 01</p>
+        <h3 style="margin:18px 0 0;font-weight:700;font-size:clamp(26px,2.4vw,40px);letter-spacing:-.03em;line-height:1.05">Setting out</h3>
+        <p style="margin:18px 0 0;font-size:clamp(17px,1.3vw,22px);line-height:1.35;letter-spacing:-.01em;max-width:34ch">Establish what the system is and what it must protect before any control is discussed.</p>
+        <p style="margin:18px 0 0;max-width:52ch;font-size:15px;line-height:1.55;color:rgba(235,231,223,.7)">We document the architecture as built rather than as presented: identity providers, network boundaries, integration hubs, data stores and the trust relationships between them. Critical assets are named with their owners, and the assumptions the business relies on are written down so they can be tested rather than inherited.</p>
+        <div style="margin-top:auto;padding-top:28px;border-top:1px solid rgba(235,231,223,.14)"><p class="m" style="margin:0;color:rgba(235,231,223,.5)">Your outcome</p><p style="margin:10px 0 0;font-size:15px;line-height:1.5;max-width:46ch">A single, agreed picture of the estate and the assets that matter.</p></div>
+        <span class="n" aria-hidden="true">01</span>
+      </article>
+      <article class="ap" data-rv style="--d:.2s">
+        <p class="m" style="margin:0;color:#e0584a">Stage 02</p>
+        <h3 style="margin:18px 0 0;font-weight:700;font-size:clamp(26px,2.4vw,40px);letter-spacing:-.03em;line-height:1.05">The threat model</h3>
+        <p style="margin:18px 0 0;font-size:clamp(17px,1.3vw,22px);line-height:1.35;letter-spacing:-.01em;max-width:34ch">Trace how an adversary would move through that picture, and rank what you find.</p>
+        <p style="margin:18px 0 0;max-width:52ch;font-size:15px;line-height:1.55;color:rgba(235,231,223,.7)">Threats are modelled against the real architecture, not a generic catalogue. Each credible path is followed from entry to foothold to objective, assessed for likelihood and blast radius, and mapped to the specific control that would break it. The result is a short, defensible list rather than a long one.</p>
+        <div style="margin-top:auto;padding-top:28px;border-top:1px solid rgba(235,231,223,.14)"><p class="m" style="margin:0;color:rgba(235,231,223,.5)">Your outcome</p><p style="margin:10px 0 0;font-size:15px;line-height:1.5;max-width:46ch">Documented attack paths and control priorities your engineers can schedule.</p></div>
+        <span class="n" aria-hidden="true">02</span>
+      </article>
+      <article class="ap" data-rv style="--d:.3s">
+        <p class="m" style="margin:0;color:#e0584a">Stage 03</p>
+        <h3 style="margin:18px 0 0;font-weight:700;font-size:clamp(26px,2.4vw,40px);letter-spacing:-.03em;line-height:1.05">The evidence standard</h3>
+        <p style="margin:18px 0 0;font-size:clamp(17px,1.3vw,22px);line-height:1.35;letter-spacing:-.01em;max-width:34ch">A control only counts when it has been exercised and observed.</p>
+        <p style="margin:18px 0 0;max-width:52ch;font-size:15px;line-height:1.55;color:rgba(235,231,223,.7)">Detections are tested against the modelled techniques. Required logs are confirmed to reach the SOC or SIEM with the fields needed to investigate, and gaps are recorded as findings rather than assumptions. Results are written for a board or auditor to read without translation.</p>
+        <div style="margin-top:auto;padding-top:28px;border-top:1px solid rgba(235,231,223,.14)"><p class="m" style="margin:0;color:rgba(235,231,223,.5)">Your outcome</p><p style="margin:10px 0 0;font-size:15px;line-height:1.5;max-width:46ch">Verifiable proof of which controls hold, which do not, and what closes the difference.</p></div>
+        <span class="n" aria-hidden="true">03</span>
+      </article>
+      <div style="flex:0 0 clamp(20px,4vw,64px)"></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" style="padding-top:clamp(72px,10vh,140px);padding-bottom:clamp(72px,10vh,140px);border-top:1px solid rgba(235,231,223,.14);display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px" data-screen-label="Numbers">
+  <div data-rv><p style="margin:0;font-weight:300;font-size:clamp(56px,6vw,112px);line-height:1;letter-spacing:-.04em"><span data-count="2">0</span></p><p class="m" style="margin:16px 0 0;color:rgba(235,231,223,.55)">Lines everything is measured from</p></div>
+  <div data-rv style="--d:.1s"><p style="margin:0;font-weight:300;font-size:clamp(56px,6vw,112px);line-height:1;letter-spacing:-.04em"><span data-count="3">0</span></p><p class="m" style="margin:16px 0 0;color:rgba(235,231,223,.55)">Services, one practice</p></div>
+  <div data-rv style="--d:.2s"><p style="margin:0;font-weight:300;font-size:clamp(56px,6vw,112px);line-height:1;letter-spacing:-.04em"><span data-count="30">0</span><span style="font-size:.4em;color:rgba(235,231,223,.5)"> min</span></p><p class="m" style="margin:16px 0 0;color:rgba(235,231,223,.55)">First conversation, no deck</p></div>
+  <div data-rv style="--d:.3s"><p style="margin:0;font-weight:300;font-size:clamp(56px,6vw,112px);line-height:1;letter-spacing:-.04em;color:#e0584a"><span data-count="0">0</span></p><p class="m" style="margin:16px 0 0;color:rgba(235,231,223,.55)">Account managers</p></div>
+</section>
+
+<section id="about" class="chalk" style="background:#ebe7df;color:#141414;overflow:hidden" data-screen-label="About">
+  <div class="wrap two" style="display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,80px);padding-top:clamp(80px,12vh,160px);padding-bottom:clamp(80px,12vh,160px);align-items:center">
+    <figure data-rv style="margin:0;position:relative;aspect-ratio:4/5;overflow:hidden;background:#d8d3c8"><img data-parallax="-60" src="assets/photo-jacket.png" alt="Founder facing the Christchurch skyline at dusk, black and white" style="position:absolute;inset:-12% 0;width:100%;height:124%;object-fit:cover;filter:grayscale(1) contrast(1.05)"><figcaption class="m" style="position:absolute;left:16px;bottom:14px;color:#ebe7df;font-size:10px">[Founder name] — Ōtautahi Christchurch</figcaption></figure>
+    <div>
+      <p class="m" data-rv style="margin:0;color:#8a1c1c">04 — About</p>
+      <h2 data-rv style="--d:.1s;margin:22px 0 0;font-weight:300;font-size:clamp(36px,4.6vw,84px);line-height:.94;letter-spacing:-.04em">Built by a practitioner,<br><strong style="font-weight:800">not a sales deck.</strong></h2>
+      <p data-rv style="--d:.2s;margin:32px 0 0;max-width:52ch;font-size:clamp(16px,1.25vw,20px);line-height:1.5;color:#3a3a3a">GROMA Cyber Intelligence is a Christchurch security practice founded by [Founder name] after [N] years securing systems from the inside. Small by design: you talk to the person who does the work, and the work is done in your repos, your cloud and your on-call rotation.</p>
+      <div data-rv class="two" style="--d:.3s;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px;margin-top:36px;font-size:15px">
+        <div><p class="m" style="margin:0;color:#6b6b6b">The name</p><p style="margin:12px 0 0;line-height:1.55;color:#3a3a3a">A groma is the Roman surveying cross-staff that fixed two perpendicular lines on open ground. From those two lines a whole city was laid out. Nothing was built until the lines were true.</p></div>
+        <div><p class="m" style="margin:0;color:#6b6b6b">What we stand for</p><div style="margin-top:8px;border-bottom:1px solid rgba(20,20,20,.16)"><div class="li"><span style="color:#8a1c1c">+</span><span>People</span></div><div class="li"><span style="color:#8a1c1c">+</span><span>Insight</span></div><div class="li"><span style="color:#8a1c1c">+</span><span>A safer New Zealand</span></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="position:relative;overflow:hidden;background:#141414" data-screen-label="Contact">
+  <div aria-hidden="true" style="position:absolute;right:-8%;top:-10%;width:min(48vw,680px);aspect-ratio:240/265;--m:url('assets/mark-amber.png') center/contain no-repeat;-webkit-mask:var(--m);mask:var(--m);background:rgba(235,231,223,.05);pointer-events:none"></div>
+  <div class="wrap two" style="display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,80px);padding-top:clamp(80px,12vh,160px);padding-bottom:clamp(80px,12vh,160px);align-items:start;position:relative">
+    <div>
+      <p class="m" data-rv style="margin:0;color:#e0584a">05 — Contact</p>
+      <h2 data-rv style="--d:.1s;margin:22px 0 0;font-weight:300;font-size:clamp(44px,6.6vw,128px);line-height:.9;letter-spacing:-.045em">Assume breach.<br><strong style="font-weight:800;color:#e0584a">Prove otherwise.</strong></h2>
+      <p data-rv style="--d:.2s;margin:32px 0 0;max-width:44ch;font-size:clamp(16px,1.25vw,20px);line-height:1.5;color:rgba(235,231,223,.75)">Thirty minutes with your architecture as it is. No deck. You leave with the first three things worth fixing.</p>
+      <a data-rv href="mailto:hello@gromaintel.com" style="--d:.3s;display:inline-block;margin-top:32px;font-size:clamp(20px,1.8vw,30px);font-weight:500;text-decoration:none;border-bottom:1px solid #e0584a;padding-bottom:4px">hello@gromaintel.com</a>
+    </div>
+    <form data-rv action="mailto:hello@gromaintel.com" method="post" enctype="text/plain" style="--d:.2s;display:grid;gap:28px;margin:0;padding-top:12px">
+      <label style="display:block"><span class="m" style="display:block;color:rgba(235,231,223,.5);margin-bottom:6px">Name</span><input class="in" name="name" type="text" placeholder="Your name"></label>
+      <label style="display:block"><span class="m" style="display:block;color:rgba(235,231,223,.5);margin-bottom:6px">Work email</span><input class="in" name="email" type="email" placeholder="you@company.co.nz"></label>
+      <label style="display:block"><span class="m" style="display:block;color:rgba(235,231,223,.5);margin-bottom:6px">What are you working on?</span><textarea class="in" name="message" rows="4" placeholder="A sentence or two is plenty" style="resize:vertical"></textarea></label>
+      <button class="btn" type="submit" data-magnet style="cursor:pointer;justify-self:start"><span>Send</span><span>→</span></button>
+    </form>
+  </div>
+</section>
+
+<footer class="wrap m" style="display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-top:28px;padding-bottom:36px;border-top:1px solid rgba(235,231,223,.14);color:rgba(235,231,223,.45)" data-screen-label="Footer"><span>People / Insight / A Safer New Zealand</span><span style="display:flex;gap:28px;flex-wrap:wrap"><a href="#approach" style="text-decoration:none;color:inherit">Approach</a><a href="#about" style="text-decoration:none;color:inherit">About</a><a href="mailto:hello@gromaintel.com" style="text-decoration:none;color:inherit">hello@gromaintel.com</a></span><span>© 2026 GROMA Cyber Intelligence NZ Ltd</span></footer>
+
+<script src="groma-site.js" defer></script>
+</body>
+</html>
