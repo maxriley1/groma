@@ -1,4 +1,6 @@
 (function () {
+  // frame-bust: meta-delivered frame-ancestors is ignored by browsers, so enforce in script
+  try { if (window.top !== window.self) { document.documentElement.style.display = 'none'; window.top.location = window.self.location; } } catch (e) { document.documentElement.style.display = 'none'; }
   const G = window.GROMA = window.GROMA || {};
   const rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fine = matchMedia('(pointer: fine)').matches;
@@ -68,6 +70,7 @@
     // Hero canvas: survey field
     const cv = root.querySelector('[data-hero-canvas]');
     if (cv) field(cv);
+
 
     // Smooth anchor nav
     $('a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => { const t = root.querySelector(a.getAttribute('hash') || a.hash); if (!t) return; e.preventDefault(); scrollTo({ top: t.getBoundingClientRect().top + scrollY, behavior: rm ? 'auto' : 'smooth' }); }));
