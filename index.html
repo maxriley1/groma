@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; form-action https://formspree.io; base-uri 'self'; frame-ancestors 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; form-action https://formsubmit.co; base-uri 'self'; frame-ancestors 'none'">
 <title>GROMA Cyber Intelligence — Every breach traces back to a line.</title>
 <meta name="description" content="Security architecture, threat modelling and independent security consultancy. Christchurch, Aotearoa.">
 <meta property="og:site_name" content="GROMA Cyber Intelligence"><meta property="og:title" content="Every breach traces back to a line."><meta property="og:description" content="Security architecture, threat modelling and independent security consultancy. Christchurch, Aotearoa."><meta property="og:type" content="website"><meta property="og:url" content="https://www.gromaintel.com/">
@@ -255,11 +255,14 @@ a{color:#ebe7df}a:hover{color:#e0584a}
       <p data-rv style="--d:.2s;margin:32px 0 0;max-width:44ch;font-size:clamp(16px,1.25vw,20px);line-height:1.5;color:rgba(235,231,223,.75)">Thirty minutes with your architecture as it is. No deck. You leave with the first three things worth fixing.</p>
       <a data-rv href="mailto:hello@gromaintel.com" style="--d:.3s;display:inline-block;margin-top:32px;font-size:clamp(20px,1.8vw,30px);font-weight:500;text-decoration:none;border-bottom:1px solid #e0584a;padding-bottom:4px">hello@gromaintel.com</a>
     </div>
-    <form data-rv action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="--d:.2s;display:grid;gap:28px;margin:0;padding-top:12px">
+    <form data-rv action="https://formsubmit.co/hello@gromaintel.com" method="POST" style="--d:.2s;display:grid;gap:28px;margin:0;padding-top:12px">
       <label style="display:block"><span class="m" style="display:block;color:rgba(235,231,223,.5);margin-bottom:6px">Name</span><input class="in" name="name" type="text" autocomplete="name" placeholder="Your name"></label>
       <label style="display:block"><span class="m" style="display:block;color:rgba(235,231,223,.5);margin-bottom:6px">Work email</span><input class="in" name="email" type="email" autocomplete="email" placeholder="you@company.co.nz"></label>
       <label style="display:block"><span class="m" style="display:block;color:rgba(235,231,223,.5);margin-bottom:6px">What are you working on?</span><textarea class="in" name="message" rows="4" placeholder="A sentence or two is plenty" style="resize:vertical"></textarea></label>
       <input type="hidden" name="_subject" value="New enquiry via gromaintel.com">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
       <button class="btn" type="submit" data-magnet style="cursor:pointer;justify-self:start"><span>Send</span><span>→</span></button>
     </form>
   </div>
