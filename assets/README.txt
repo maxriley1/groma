@@ -1,1 +1,0 @@
-Add your hero landscape photograph as assets/hero.jpg (landscape orientation, at least 2400px wide). It is displayed in black and white with animated mist over it.
