@@ -108,7 +108,7 @@ a.store:hover { transform: translateY(-2px); color: var(--bg); }
 .stub-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: .1em; }
 .stub-code { font-family: Archivo; font-stretch: 125%; font-weight: 900; font-size: 48px; line-height: 1; margin-top: 6px; }
 .barcode { height: 56px; margin-top: 22px; opacity: .85; background: repeating-linear-gradient(90deg, currentColor 0 3px, transparent 3px 5px, currentColor 5px 6px, transparent 6px 10px); }
-.stub-cta { height: 56px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 20px; background: var(--bg); color: var(--text); font-family: Archivo; font-stretch: 112%; font-weight: 800; font-size: 15px; letter-spacing: .03em; border-radius: 14px; transition: transform .2s; }
+.stub-cta { height: 56px; display: flex; align-items: center; justify-content: space-between; gap: 12px; white-space: nowrap; padding: 0 20px; background: var(--bg); color: var(--text); font-family: Archivo; font-stretch: 112%; font-weight: 800; font-size: 15px; letter-spacing: .03em; border-radius: 14px; transition: transform .2s; }
 .stub-cta:hover { transform: translateX(4px); color: var(--accent); }
 
 /* The lineup */
