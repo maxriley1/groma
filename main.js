@@ -36,7 +36,7 @@
     id: String(a.id), name: String(a.name), code: String(a.code).toUpperCase().slice(0, 3),
     dest: String(a.dest || ''), tagline: String(a.tagline || ''), version: String(a.version || ''),
     status: STATUS[a.status] ? a.status : 'Building',
-    url: safeLink(a.url), cta: a.cta ? String(a.cta) : null,
+    url: safeLink(a.url), cta: a.cta ? String(a.cta) : null, web: a.web !== false,
     ios: safeStore(a.ios, 'apps.apple.com'), android: safeStore(a.android, 'play.google.com'),
     bg: safeBackground(a.bg), ink: safeColor(a.ink), art: safeImage(a.art), artIcon: a.artFit === 'icon', shot: safeImage(a.shot),
     gate: String(i + 1).padStart(2, '0'),
@@ -68,10 +68,13 @@
   $('lede').textContent = stores
     ? 'Live apps are boarding now. Some are already on the App Store and Google Play, the rest are still being built.'
     : 'Jelly Drop is checking in for the App Store and Google Play. Play it in your browser while it waits at the gate.';
+  const scheduled = apps.filter(a => a.status === 'Building').map(a => a.name);
+  if (scheduled.length) $('lede').textContent += ` Coming soon: ${scheduled.length > 1 ? scheduled.slice(0, -1).join(', ') + ' and ' + scheduled.at(-1) : scheduled[0]}.`;
 
   // Ticket stack: real apps first, then "next flight" tickets so there's always a stack to shuffle.
   const stackEl = $('stack');
-  const featured = apps.filter(a => a.status !== 'Building');
+  // Released apps first, then coming-soon apps, then placeholders.
+  const featured = [...apps.filter(a => a.status !== 'Building'), ...apps.filter(a => a.status === 'Building')];
   while (featured.length < 3) featured.push({ placeholder: true, gate: '--', code: 'TBA', name: 'Next flight', tagline: 'Being scheduled', bg: 'linear-gradient(150deg,#4b5266,#1d212d)', ink: '#ffffff' });
   const tickets = featured.map(a => {
     const t = el('div', 'ticket');
@@ -115,7 +118,9 @@
       row.addEventListener('click', () => select(a.id, true));
       let k = 0;
       const storeColor = inStore(a) ? '#7fb8ff' : storePending(a) ? '#ffc84a' : '#6b7180';
-      [[a.gate, 2, '#f4f5f7'], [a.name, 10, '#f4f5f7'], [storeCode(a), 7, storeColor], [a.dest, 10, '#f4f5f7'], [a.version, 4, '#9aa0ad'], [st(a).label, 9, st(a).color]].forEach(([txt, n, color]) => {
+      // The board has 10 flaps for a name: a longer name shows its first word ("Steady by Groma" → STEADY).
+      const boardName = a.name.length > 10 ? a.name.split(' ')[0] : a.name;
+      [[a.gate, 2, '#f4f5f7'], [boardName, 10, '#f4f5f7'], [storeCode(a), 7, storeColor], [a.dest, 10, '#f4f5f7'], [a.version, 4, '#9aa0ad'], [st(a).label, 9, st(a).color]].forEach(([txt, n, color]) => {
         const cell = el('div', 'cell'); cell.setAttribute('aria-hidden', 'true');
         for (const ch of pad(txt, n)) {
           const f = el('span', 'flap', ch); f.style.color = color; cell.append(f);
@@ -203,7 +208,7 @@
       const chip = (s, label) => chips.append(el('span', 'chip' + (s.state === 'pending' ? ' pending' : ''), s.state === 'pending' ? `${label} · soon` : label));
       if (a.ios) chip(a.ios, 'App Store');
       if (a.android) chip(a.android, 'Google Play');
-      if (a.url) chips.append(el('span', 'chip', 'Web'));
+      if (a.url && a.web) chips.append(el('span', 'chip', 'Web'));
       body.append(head, el('div', 'card-tagline', a.tagline), chips);
       c.append(art, body);
       cardsEl.append(c);

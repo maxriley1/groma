@@ -2,6 +2,7 @@
 //   status:  'Live' (BOARDING) · 'Pending' (store launch waiting on review) · 'Beta' (ON TIME) · 'Building' (SCHEDULED)
 //   ios / android:  null (not planned), { state: 'pending', note } or { state: 'live', url }
 //     A live store URL must be https on apps.apple.com or play.google.com.
+//   web: false when url is an info page, not a web version (hides the Web chip)
 //   art: card image in img/ (artFit: 'icon' shows it as a centred app icon instead of filling the card)
 //   bg: a hex colour or linear-gradient(<deg>deg,#rrggbb,#rrggbb); ink: a hex colour.
 window.SITE = {
@@ -27,5 +28,43 @@ window.APPS = [
     art: 'img/jellydrop-icon.png',
     artFit: 'icon',
     shot: 'img/jellydrop-shot.jpg',
+  },
+  {
+    id: 'kippu',
+    name: 'Kippu',
+    code: 'KPU',
+    dest: 'TRAVEL',
+    tagline: 'Know when to leave. Countdowns on your Lock Screen, the last train home, and labels read in your language. Coming 2027 after full testing in Japan.',
+    status: 'Building',
+    version: '1.0',
+    url: 'https://gromaintel.com/kippu/',
+    cta: 'ABOUT KIPPU',
+    web: false,
+    ios: { state: 'pending', note: 'Coming 2027' },
+    android: null,
+    bg: 'linear-gradient(150deg,#ffe14d,#ffc400)',
+    ink: '#09090b',
+    art: 'img/kippu-icon.png',
+    artFit: 'icon',
+    shot: 'img/kippu-shot.jpg',
+  },
+  {
+    id: 'steady',
+    name: 'Steady by Groma',
+    code: 'STD',
+    dest: 'WELLBEING',
+    tagline: 'A calm place for heavy days. Check in, notice stress early with Apple Health, breathe it down, or reach your people with one press.',
+    status: 'Building',
+    version: '1.0',
+    url: 'https://steady-api.jellydrop.workers.dev/',
+    cta: 'ABOUT STEADY',
+    web: false,
+    ios: { state: 'pending', note: 'Coming soon' },
+    android: null,
+    bg: 'linear-gradient(150deg,#7b61ff,#ff5a5f)',
+    ink: '#ffffff',
+    art: 'img/steady-icon.png',
+    artFit: 'icon',
+    shot: 'img/steady-shot.jpg',
   },
 ];
