@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kippu · Join the family trip</title>
+<meta name="description" content="Open your family trip invite in Kippu.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#09090B">
+<link rel="icon" href="../mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../site.css">
+<style>
+  .open{display:flex;align-items:center;justify-content:center;min-height:64px;margin:22px 0 10px;border-radius:32px;background:var(--yellow);color:var(--ink);font:600 20px var(--ui);text-decoration:none}
+  .card{padding:18px 20px;border-radius:22px;background:var(--raised);border:1px solid var(--stroke);margin:14px 0}
+  .card b{display:block;font:600 19px var(--ui);color:var(--text)}
+  .card span{color:var(--muted);font-size:15px}
+  .steps li{margin:10px 0}
+  .ok{color:var(--lime)}
+  [hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header class="top"><a class="brand" href="../"><img src="../mark.svg" alt="">Kippu</a></header>
+<main>
+  <p class="kicker">Family trip · 家族旅行</p>
+  <h1 id="title">Join the family <b>trip.</b></h1>
+  <p class="lead" id="lead">Opening your invite…</p>
+
+  <div id="who" class="card" hidden></div>
+  <div id="hotels" hidden></div>
+
+  <a id="open" class="open" href="kippu://" hidden>Open in Kippu</a>
+
+  <ol class="steps" id="steps" hidden>
+    <li><b>Haven’t got Kippu yet?</b> Open the email from Apple called “TestFlight”, install TestFlight, then install Kippu from it.</li>
+    <li><b>Then come back here</b> and tap <em>Open in Kippu</em>. That’s it.</li>
+  </ol>
+  <p class="meta">Your names and hotels are inside this link and are read on your phone only. They aren’t sent to this website.</p>
+</main>
+<footer class="foot"><span>© 2026 Groma Cyber Intelligence Ltd</span><a href="../privacy/">Privacy</a></footer>
+<script>
+(function () {
+  var B64 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
+  function decode(code) {
+    var bits = 0, value = 0, bytes = '';
+    for (var i = 0; i < code.length; i++) {
+      var n = B64.indexOf(code.charAt(i));
+      if (n < 0) return null;
+      value = ((value << 6) | n) & 0xffff; bits += 6;
+      if (bits >= 8) { bits -= 8; bytes += String.fromCharCode((value >> bits) & 255); }
+    }
+    try { return decodeURIComponent(bytes.replace(/[\s\S]/g, function (c) { return '%' + ('0' + c.charCodeAt(0).toString(16)).slice(-2); })); } catch (e) { return null; }
+  }
+  function el(id) { return document.getElementById(id); }
+  function text(tag, value, cls) { var e = document.createElement(tag); e.textContent = value; if (cls) e.className = cls; return e; }
+  var ROLE = { wife: 'Wife', husband: 'Husband', son: 'Son', daughter: 'Daughter' };
+  var LEAD = { dad: 'Dad', mum: 'Mum' };
+  var MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  function day(d) { return d ? (+d.slice(6, 8)) + ' ' + MON[+d.slice(4, 6) - 1] : ''; }
+
+  var code = location.hash.slice(1);
+  var link = null;
+  try { link = JSON.parse(decode(code) || 'null'); } catch (e) { link = null; }
+  if (!link || link.v !== 1) {
+    el('title').textContent = 'This link is missing a piece.';
+    el('lead').textContent = 'Ask whoever sent it to send it again, then tap it in Messages.';
+    return;
+  }
+  var open = el('open');
+  open.href = 'kippu://join?d=' + code;
+  open.hidden = false;
+  var lead = link.l ? (link.l.n || LEAD[link.l.r] || 'Dad') : '';
+  var leadWord = link.l ? (LEAD[link.l.r] || 'Dad') : 'Dad';
+
+  if (link.t === 'i') {
+    el('title').textContent = 'Hi ' + link.m.n + '!';
+    el('lead').textContent = lead + (lead !== leadWord ? ' (' + leadWord + ')' : '') + ' added you to the family trip on Kippu.';
+    var who = el('who');
+    who.appendChild(text('b', 'You’re joining as ' + (ROLE[link.m.r] || 'family')));
+    who.appendChild(text('span', 'Kippu gets the hotels where you’re staying, and you can add your own tickets.'));
+    who.hidden = false;
+    el('steps').hidden = false;
+  } else if (link.t === 'j') {
+    el('title').innerHTML = '';
+    el('title').appendChild(text('span', '✓ ' + link.n + ' has joined', 'ok'));
+    el('lead').textContent = 'Tap Open in Kippu to tick ' + link.n + ' off on your family list.';
+  } else if (link.t === 's') {
+    el('title').textContent = 'Where we’re staying';
+    el('lead').textContent = 'Hotels from ' + lead + ' for the family trip. Tap Open in Kippu to update yours.';
+    el('steps').hidden = false;
+  }
+  var rows = Array.isArray(link.s) ? link.s : [];
+  if (rows.length && link.t !== 'j') {
+    var box = el('hotels');
+    rows.forEach(function (r) {
+      var c = document.createElement('div');
+      c.className = 'card';
+      c.appendChild(text('b', r[0]));
+      c.appendChild(text('span', r[3] ? day(r[3]) + (r[4] ? ' → ' + day(r[4]) : '') : 'No dates yet'));
+      box.appendChild(c);
+    });
+    box.hidden = false;
+  }
+})();
+</script>
+</body>
+</html>
