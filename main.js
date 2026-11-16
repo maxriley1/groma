@@ -67,7 +67,7 @@
   $('eyebrow-rest').textContent = `· ${apps.length} ${apps.length === 1 ? 'APP' : 'APPS'} · ${stores ? stores + ' IN STORES' : 'IOS + ANDROID PENDING'}`;
   $('lede').textContent = stores
     ? 'Live apps are boarding now. Some are already on the App Store and Google Play, the rest are still being built.'
-    : 'Jelly Drop is checking in for the App Store and Google Play. Play it in your browser while it waits at the gate.';
+    : 'Jelly Drop is checking in for the App Store and Google Play. Play it in your browser while it waits at the gate. Terminal Tycoon lands in December.';
   const scheduled = apps.filter(a => a.status === 'Building').map(a => a.name);
   if (scheduled.length) $('lede').textContent += ` Coming soon: ${scheduled.length > 1 ? scheduled.slice(0, -1).join(', ') + ' and ' + scheduled.at(-1) : scheduled[0]}.`;
 
