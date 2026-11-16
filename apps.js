@@ -3,6 +3,7 @@
 //   ios / android:  null (not planned), { state: 'pending', note } or { state: 'live', url }
 //     A live store URL must be https on apps.apple.com or play.google.com.
 //   web: false when url is an info page, not a web version (hides the Web chip)
+//   video: optional gameplay clip in video/ (.mp4), shown on the boarding pass instead of the screenshot
 //   art: card image in img/ (artFit: 'icon' shows it as a centred app icon instead of filling the card)
 //   bg: a hex colour or linear-gradient(<deg>deg,#rrggbb,#rrggbb); ink: a hex colour.
 window.SITE = {
@@ -47,6 +48,7 @@ window.APPS = [
     art: 'img/tycoon-icon.png',
     artFit: 'icon',
     shot: 'img/tycoon-shot.jpg',
+    video: 'video/tycoon-journey.mp4',
   },
   {
     id: 'kippu',

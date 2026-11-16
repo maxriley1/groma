@@ -25,6 +25,7 @@
       return u.href;
     } catch { return null; }
   };
+  const safeVideo = v => typeof v === 'string' && /^video\/[\w.-]+\.mp4$/i.test(v) ? v : null;
   const safeImage = v => typeof v === 'string' && /^img\/[\w.-]+\.(?:jpg|jpeg|png|webp|avif)$/i.test(v) ? v : null;
   const safeStore = (s, host) => {
     if (!s || typeof s !== 'object') return null;
@@ -38,7 +39,7 @@
     status: STATUS[a.status] ? a.status : 'Building',
     url: safeLink(a.url), cta: a.cta ? String(a.cta) : null, web: a.web !== false,
     ios: safeStore(a.ios, 'apps.apple.com'), android: safeStore(a.android, 'play.google.com'),
-    bg: safeBackground(a.bg), ink: safeColor(a.ink), art: safeImage(a.art), artIcon: a.artFit === 'icon', shot: safeImage(a.shot),
+    bg: safeBackground(a.bg), ink: safeColor(a.ink), art: safeImage(a.art), artIcon: a.artFit === 'icon', shot: safeImage(a.shot), video: safeVideo(a.video),
     gate: String(i + 1).padStart(2, '0'),
   }));
   const st = a => STATUS[a.status];
@@ -177,7 +178,9 @@
     if (a.android) storesEl.append(storeButton(a.android, 'Get it on', 'Google Play'));
     if (!a.ios && !a.android) storesEl.append(el('div', 'web-only', 'WEB ONLY · STORES TBC'));
     const shot = $('pass-shot'); shot.replaceChildren();
-    if (a.shot) { const img = el('img'); img.src = a.shot; img.alt = `${a.name} screenshot`; img.loading = 'lazy'; shot.append(img); }
+    // A gameplay video (muted, looping, with controls) when the app has one, otherwise the screenshot.
+    if (a.video) { const v = el('video'); v.src = a.video; if (a.shot) v.poster = a.shot; Object.assign(v, { muted: true, loop: true, autoplay: true, playsInline: true, controls: true, preload: 'metadata' }); v.setAttribute('aria-label', `${a.name} gameplay video`); shot.append(v); }
+    else if (a.shot) { const img = el('img'); img.src = a.shot; img.alt = `${a.name} screenshot`; img.loading = 'lazy'; shot.append(img); }
     const stub = $('pass-stub'); stub.style.background = a.bg; stub.style.color = a.ink;
     $('pass-code').textContent = a.code;
     const cta = $('pass-cta'); $('pass-cta-label').textContent = ctaLabel(a);
